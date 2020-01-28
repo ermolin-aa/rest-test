@@ -3,8 +3,8 @@ package com.example.demo.contoller;
 import com.example.demo.domain.Quiz;
 import com.example.demo.service.QuizService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -31,22 +31,20 @@ public class QuizController {
 
     @GetMapping
 
-    public ResponseEntity<List<Quiz>> getAllQuizzes(
-            @RequestParam(defaultValue = "0") Integer pageNum,
-            @RequestParam(defaultValue = "5") Integer pageSize,
-            @RequestParam(defaultValue = "title") String sortBy,
-            @RequestParam(defaultValue = "", required = false) String title,
-            @RequestParam(defaultValue = "true") Boolean active,
-            @RequestParam(defaultValue = "", required = false) String beginDate,
-            @RequestParam(defaultValue = "", required = false) String endDate) {
-
-        System.out.println("!!!");
-        System.out.println(title.isEmpty());
-        System.out.println(beginDate.isEmpty());
-        System.out.println(endDate.isEmpty());
+    public ResponseEntity<List<Quiz>> getQuizzes(
+            @RequestParam(defaultValue = "0", name = "Номер страницы") Integer pageNum,
+            @RequestParam(defaultValue = "5", name = "Количество тестов на странице") Integer pageSize,
+            @RequestParam(defaultValue = "title", name = "Сортировка по:") String sortBy,
+            @RequestParam(defaultValue = "", required = false, name = "Название теста") String title,
+            @RequestParam(defaultValue = "true", name = "Тест активен?") Boolean active,
+            @RequestParam(defaultValue = "1990-01-01", required = false, name = "Дата начала теста")
+                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate beginDate,
+            @RequestParam(defaultValue = "2100-01-01", required = false, name = "Дата окончания теста")
+                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
 
 
-        List<Quiz> quizzes = quizService.findAll(pageNum, pageSize, sortBy);
+        List<Quiz> quizzes = quizService.findByParams(pageNum, pageSize, sortBy,
+                title, active, beginDate, endDate);
 
         return new ResponseEntity<>(quizzes, new HttpHeaders(), HttpStatus.OK);
     }

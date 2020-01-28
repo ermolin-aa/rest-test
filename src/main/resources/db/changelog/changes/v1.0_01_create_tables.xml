@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create_quiz_09" author="Alexei_Ermolin">
+    <changeSet id="create_quiz_11" author="Alexei_Ermolin">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="quiz"/>
@@ -20,7 +20,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create_question_09" author="Alexei_Ermolin">
+    <changeSet id="create_question_11" author="Alexei_Ermolin">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="question"/>
@@ -36,7 +36,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create_foreign_key_09" author="Alexei_Ermolin">
+    <changeSet id="create_foreign_key_11" author="Alexei_Ermolin">
         <preConditions>
             <not>
                 <foreignKeyConstraintExists foreignKeyName="fk_question_quiz_id"/>
@@ -49,6 +49,5 @@
                 referencedColumnNames="id"
                 referencedTableName="quiz"/>
     </changeSet>
-
 
 </databaseChangeLog>

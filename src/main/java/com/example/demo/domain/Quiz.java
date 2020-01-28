@@ -2,14 +2,9 @@ package com.example.demo.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -28,9 +23,9 @@ public class Quiz {
     @NotNull
     private String title;
 
-    private Date beginDate;
+    private LocalDate beginDate;
 
-    private Date endDate;
+    private LocalDate endDate;
 
     private Boolean active;
 
