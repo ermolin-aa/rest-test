@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="src/main/resources/distributed_data_changelog.xml">
+
+    <changeSet id="insert-quiz-data-09" author="Alexei_Ermolin">
+        <preConditions>
+            <tableExists tableName="quiz"/>
+        </preConditions>
+        <loadUpdateData
+                file="db/changelog/data/quiz.csv"
+                primaryKey="id"
+                tableName="quiz">
+        </loadUpdateData>
+        <rollback>
+            <delete tableName="quiz"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="insert-question-data-09" author="Alexei_Ermolin">
+        <preConditions>
+            <tableExists tableName="question"/>
+        </preConditions>
+        <loadUpdateData
+                file="db/changelog/data/question.csv"
+                primaryKey="id"
+                tableName="question">
+        </loadUpdateData>
+        <rollback>
+            <delete tableName="question"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
