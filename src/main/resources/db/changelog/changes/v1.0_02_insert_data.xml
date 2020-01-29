@@ -4,7 +4,7 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
                    logicalFilePath="src/main/resources/distributed_data_changelog.xml">
 
-    <changeSet id="insert-quiz-data-11" author="Alexei_Ermolin">
+    <changeSet id="insert-quiz-data-12" author="Alexei_Ermolin">
         <preConditions>
             <tableExists tableName="quiz"/>
         </preConditions>
@@ -18,7 +18,7 @@
         </rollback>
     </changeSet>
 
-    <changeSet id="insert-question-data-11" author="Alexei_Ermolin">
+    <changeSet id="insert-question-data-12" author="Alexei_Ermolin">
         <preConditions>
             <tableExists tableName="question"/>
         </preConditions>

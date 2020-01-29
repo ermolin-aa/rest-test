@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -18,12 +19,12 @@ public class Question {
 
     @Id
     @GeneratedValue
+    @ApiModelProperty(hidden = true)
     private Long id;
 
     @NotNull
     private String text;
 
     @NotNull
-    private Integer order;
-
+    private Integer priority;
 }
