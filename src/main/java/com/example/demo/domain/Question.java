@@ -19,12 +19,12 @@ public class Question {
 
     @Id
     @GeneratedValue
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true) //чтобы в Swagger при создании entity не требовался id
     private Long id;
 
     @NotNull
     private String text;
 
     @NotNull
-    private Integer priority;
+    private Integer priority; //определяет порядок вывода вопросов в опросе (см. условие задачи)
 }

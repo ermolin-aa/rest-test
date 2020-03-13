@@ -5,8 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.1.12.RELEASE</version> <!-- С версией 2.2 бута не дружит Swagger, одним из способов решения проблемы -->
+        <relativePath/>                   <!-- является использование Swagger версии 3.0.0.SNAPSHOT из стороннего репо -->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>

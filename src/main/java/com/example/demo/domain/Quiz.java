@@ -29,7 +29,7 @@ public class Quiz {
 
     @Id
     @GeneratedValue
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true) //чтобы в Swagger при создании entity не требовался id
     private Long id;
 
     @NotNull
